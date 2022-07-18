@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { DatabaseModule } from './database.module';
-import { HelloModule } from './hello/hello.module';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -10,7 +10,7 @@ import { HelloModule } from './hello/hello.module';
       isGlobal: true,
       envFilePath: [`.env`],
     }),
-    HelloModule,
+    UserModule,
   ],
   controllers: [],
   providers: [],
