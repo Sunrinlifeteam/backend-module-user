@@ -18,7 +18,7 @@ describe('UserController', () => {
     it('should return ""', () => {
       console.log(
         userController.getUserById({
-          id: 'dc1db6a1-32b7-4f48-a87f-062613e3ffe7',
+          value: 'dc1db6a1-32b7-4f48-a87f-062613e3ffe7',
         }),
       );
     });

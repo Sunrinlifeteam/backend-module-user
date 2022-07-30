@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { StringValue } from 'google.protobuf';
 import { UserEntity } from 'src/shared/access/user.dao';
-import { GetUserById } from 'src/shared/transfer/user.dto';
 import { Repository } from 'typeorm';
 
 @Injectable()
@@ -11,7 +11,7 @@ export class UserService {
     private readonly userRepository: Repository<UserEntity>,
   ) {}
 
-  async getUserById({ id }: GetUserById): Promise<UserEntity> {
+  async getUserById({ value: id }: StringValue): Promise<UserEntity> {
     const users = await this.userRepository.count();
 
     Logger.log(users, 'UserService');

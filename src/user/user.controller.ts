@@ -1,6 +1,7 @@
 import { Controller, Logger } from '@nestjs/common';
 import { GrpcMethod } from '@nestjs/microservices';
-import { GetUserById, User } from 'src/shared/transfer/user.dto';
+import { StringValue } from 'google.protobuf';
+import { User } from 'src/shared/transfer/user.dto';
 import { UserService } from './user.service';
 
 @Controller()
@@ -8,8 +9,8 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @GrpcMethod('UserService', 'getUserById')
-  async getUserById(data: GetUserById): Promise<User> {
-    const user = await this.userService.getUserById(data);
+  async getUserById(id: StringValue): Promise<User> {
+    const user = await this.userService.getUserById(id);
     Logger.log(user, 'UserController');
     return {
       id: user.id,
