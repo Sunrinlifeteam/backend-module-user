@@ -22,7 +22,7 @@ export class UserController {
       class: user.class,
       number: user.number,
       accountType: user.accountType,
-      roleFlag: user.role,
+      role: user.role,
       description: user.description,
       githubLink: user.githubLink,
       image: user.image,
