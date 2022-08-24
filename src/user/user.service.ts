@@ -2,7 +2,7 @@ import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { StringValue } from 'google.protobuf';
 import { UserEntity } from 'src/shared/access/user.dao';
-import { Repository } from 'typeorm';
+import { DeepPartial, Repository } from 'typeorm';
 
 @Injectable()
 export class UserService {
@@ -19,5 +19,10 @@ export class UserService {
     return await this.userRepository.findOne({
       where: { id },
     });
+  }
+
+  async createUser(user: DeepPartial<UserEntity>): Promise<UserEntity> {
+    const newUser = await this.userRepository.create(user);
+    return await this.userRepository.save(newUser);
   }
 }
