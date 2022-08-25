@@ -10,7 +10,7 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @GrpcMethod('UserService', 'getUserById')
-  async getUserById(id: StringValue): Promise<User> {
+  async getUserById({ value: id }: StringValue): Promise<User> {
     const user = await this.userService.getUserById(id);
     Logger.log(user, 'UserController');
     return {
@@ -40,7 +40,9 @@ export class UserController {
   }
 
   @GrpcMethod('UserService', 'updateUser')
-  async updateUser(user: UpdateUser): Promise<void> {
+  async updateUser(user: UpdateUser): Promise<UserEntity> {
+    console.log(user);
     await this.userService.updateUser(user.id, user);
+    return await this.userService.getUserById(user.id);
   }
 }
