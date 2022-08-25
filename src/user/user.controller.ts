@@ -2,7 +2,7 @@ import { Controller, Logger } from '@nestjs/common';
 import { GrpcMethod } from '@nestjs/microservices';
 import { StringValue } from 'google.protobuf';
 import { UserEntity } from 'src/shared/access/user.dao';
-import { CreateUser, User } from 'src/shared/transfer/user.dto';
+import { CreateUser, UpdateUser, User } from 'src/shared/transfer/user.dto';
 import { UserService } from './user.service';
 
 @Controller()
@@ -37,5 +37,10 @@ export class UserController {
   async createUser(user: CreateUser): Promise<UserEntity> {
     console.log(user);
     return await this.userService.createUser(user);
+  }
+
+  @GrpcMethod('UserService', 'updateUser')
+  async updateUser(user: UpdateUser): Promise<void> {
+    await this.userService.updateUser(user.id, user);
   }
 }
