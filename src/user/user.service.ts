@@ -11,7 +11,7 @@ export class UserService {
     private readonly userRepository: Repository<UserEntity>,
   ) {}
 
-  async getUserById({ value: id }: StringValue): Promise<UserEntity> {
+  async getUserById(id: string): Promise<UserEntity> {
     const users = await this.userRepository.count();
 
     Logger.log(users, 'UserService');
