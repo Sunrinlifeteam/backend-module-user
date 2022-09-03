@@ -1,7 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { StringValue } from 'google.protobuf';
-import { UserEntity } from 'src/shared/access/user.dao';
+import { StringValue } from 'google/protobuf/wrappers';
+import { UserEntity } from 'shared/lib/access/user.dao';
 import { DeepPartial, Repository, UpdateResult } from 'typeorm';
 
 @Injectable()

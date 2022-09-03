@@ -1,8 +1,8 @@
 import { Controller, Logger } from '@nestjs/common';
 import { GrpcMethod } from '@nestjs/microservices';
-import { StringValue } from 'google.protobuf';
-import { UserEntity } from 'src/shared/access/user.dao';
-import { CreateUser, UpdateUser, User } from 'src/shared/transfer/user.dto';
+import { StringValue } from 'google/protobuf/wrappers';
+import { UserEntity } from 'shared/lib/access/user.dao';
+import { CreateUser, UpdateUser, User } from 'shared/lib/transfer/user.dto';
 import { UserService } from './user.service';
 
 @Controller()
